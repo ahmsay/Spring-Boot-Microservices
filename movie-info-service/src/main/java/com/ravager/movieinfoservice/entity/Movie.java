@@ -1,4 +1,4 @@
-package com.ravager.movieinfoservice.model;
+package com.ravager.movieinfoservice.entity;
 
 public class Movie {
 

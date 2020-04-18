@@ -1,12 +1,12 @@
-package com.ravager.moviecatalogservice.model;
+package com.ravager.moviecatalogservice.entity;
 
-public class CatalogItem {
+public class Catalog {
 
     private String name;
     private String description;
     private int rating;
 
-    public CatalogItem(final String name, final String description, final int rating) {
+    public Catalog(final String name, final String description, final int rating) {
         this.name = name;
         this.description = description;
         this.rating = rating;
