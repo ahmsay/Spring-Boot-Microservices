@@ -1,0 +1,10 @@
+*
+!*/
+!.gitignore
+!.README.md
+!/movie-catalog-service/src/**
+!/movie-info-service/src/**
+!/ratings-data-service/src/**
+!/movie-catalog-service/pom.xml
+!/movie-info-service/pom.xml
+!/ratings-data-service/pom.xml
