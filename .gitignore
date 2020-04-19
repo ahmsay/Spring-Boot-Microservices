@@ -5,6 +5,8 @@
 !/movie-catalog-service/src/**
 !/movie-info-service/src/**
 !/ratings-data-service/src/**
+!/discovery-server/src/**
 !/movie-catalog-service/pom.xml
 !/movie-info-service/pom.xml
 !/ratings-data-service/pom.xml
+!/discovery-server/pom.xml
