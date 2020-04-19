@@ -2,14 +2,13 @@ package com.ravager.moviecatalogservice.controller;
 
 import com.ravager.moviecatalogservice.entity.Catalog;
 import com.ravager.moviecatalogservice.entity.Movie;
-import com.ravager.moviecatalogservice.entity.Rating;
+import com.ravager.moviecatalogservice.entity.UserRating;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,20 +26,10 @@ public class CatalogController {
 
     @RequestMapping("/{userId}")
     public List<Catalog> getCatalog(@PathVariable("userId") String userId) {
-        List<Rating> ratings = Arrays.asList(
-                new Rating("1234", 4),
-                new Rating("1235", 4),
-                new Rating("0238", 1)
-        );
+        UserRating userRating = restTemplate.getForObject("http://localhost:8083/rating/user/" + userId, UserRating.class);
 
-        return ratings.stream().map(rating -> {
-            Movie movie = webClientBuilder.build()
-                    .get()
-                    .uri("http://localhost:8082/movie/" + rating.getMovieId())
-                    .retrieve()
-                    .bodyToMono(Movie.class)
-                    .block();
-
+        return userRating.getUserRatings().stream().map(rating -> {
+            Movie movie = restTemplate.getForObject("http://localhost:8082/movie/" + rating.getMovieId(), Movie.class);
             return new Catalog(movie.getName(), "test", rating.getRating());
         })
         .collect(Collectors.toList());
