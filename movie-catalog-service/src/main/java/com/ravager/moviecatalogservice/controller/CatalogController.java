@@ -17,11 +17,9 @@ import java.util.stream.Collectors;
 public class CatalogController {
 
     private final RestTemplate restTemplate;
-    private final WebClient.Builder webClientBuilder;
 
-    public CatalogController(final RestTemplate restTemplate, final WebClient.Builder webClientBuilder) {
+    public CatalogController(final RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
-        this.webClientBuilder = webClientBuilder;
     }
 
     @RequestMapping("/{userId}")
@@ -29,9 +27,8 @@ public class CatalogController {
         UserRating userRating = restTemplate.getForObject("http://ratings-data-service/rating/user/" + userId, UserRating.class);
 
         return userRating.getUserRatings().stream().map(rating -> {
-            Movie movie = restTemplate.getForObject("http://movie-info-service/movie/" + rating.getMovieId(), Movie.class);
-            return new Catalog(movie.getName(), "test", rating.getRating());
-        })
-        .collect(Collectors.toList());
+            Movie movie = restTemplate.getForObject("http://movie-info-service/movies/" + rating.getMovieId(), Movie.class);
+            return new Catalog(movie.getName(), movie.getDescription(), rating.getRating());
+        }).collect(Collectors.toList());
     }
 }
