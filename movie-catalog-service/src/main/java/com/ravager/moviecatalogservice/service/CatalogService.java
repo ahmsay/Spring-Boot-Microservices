@@ -18,12 +18,20 @@ public class CatalogService implements ICatalogService {
     }
 
     @Override
-    @HystrixCommand(fallbackMethod = "getFallbackCatalog", commandProperties = {
+    @HystrixCommand(
+        fallbackMethod = "getFallbackCatalog",
+        commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000"),
             @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "5"),
             @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "50"),
             @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "5000")
-    })
+        },
+        threadPoolKey = "movieInfoPool",
+        threadPoolProperties = {
+            @HystrixProperty(name = "coreSize", value = "20"),
+            @HystrixProperty(name = "maxQueueSize", value = "10")
+        }
+    )
     public Catalog getCatalog(final Rating rating) {
         Movie movie = restTemplate.getForObject("http://movie-info-service/movies/" + rating.getMovieId(), Movie.class);
         return new Catalog(movie.getName(), movie.getDescription(), rating.getRating());
