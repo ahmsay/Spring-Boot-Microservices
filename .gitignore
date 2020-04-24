@@ -6,7 +6,10 @@
 !/movie-info-service/src/**
 !/ratings-data-service/src/**
 !/discovery-server/src/**
+!/spring-boot-config/src/**
+
 !/movie-catalog-service/pom.xml
 !/movie-info-service/pom.xml
 !/ratings-data-service/pom.xml
 !/discovery-server/pom.xml
+!/spring-boot-config/pom.xml
