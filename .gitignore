@@ -7,9 +7,11 @@
 !/ratings-data-service/src/**
 !/discovery-server/src/**
 !/spring-boot-config/src/**
+!/spring-cloud-config-server/src/**
 
 !/movie-catalog-service/pom.xml
 !/movie-info-service/pom.xml
 !/ratings-data-service/pom.xml
 !/discovery-server/pom.xml
 !/spring-boot-config/pom.xml
+!/spring-cloud-config-server/pom.xml
