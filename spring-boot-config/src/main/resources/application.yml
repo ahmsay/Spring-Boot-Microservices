@@ -7,8 +7,10 @@ app:
   description: welcome to ${app.name}
 
 db:
-  connection: "{connectionString: 'http://___', userName: 'nihilus', password: 'pw'}"
+  connection: connection
   host: 127.0.0.1
   port: 1200
 
 management.endpoints.web.exposure.include: "*"
+
+spring.profiles.active: test
