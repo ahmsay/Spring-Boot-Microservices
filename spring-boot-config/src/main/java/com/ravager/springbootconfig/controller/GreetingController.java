@@ -1,26 +1,20 @@
 package com.ravager.springbootconfig.controller;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.ravager.springbootconfig.DbSettings;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-import java.util.Map;
 
 @RestController
 public class GreetingController {
 
-    @Value("${my.greeting: getting greeting failed}")
-    private String myGreeting;
+    private DbSettings dbSettings;
 
-    @Value("${my.list.values}")
-    private List<String> values;
-
-    @Value("#{${dbValues}}")
-    private Map<String, String> dbValues;
+    public GreetingController(final DbSettings dbSettings) {
+        this.dbSettings = dbSettings;
+    }
 
     @GetMapping("/greeting")
     public String greeting() {
-        return myGreeting + values + dbValues;
+        return dbSettings.getConnection() + dbSettings.getHost() + dbSettings.getPort();
     }
 }
