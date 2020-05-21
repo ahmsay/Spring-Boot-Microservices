@@ -3,15 +3,15 @@ There are two different projects built with microservices architecture in this r
 
 ## Movie Catalog Service Response
 <p>
-  <img src="https://user-images.githubusercontent.com/22731894/81469261-c31d2d00-91ec-11ea-8f77-d1f9af908fd1.png" width="550">
+  <img src="https://user-images.githubusercontent.com/22731894/81469261-c31d2d00-91ec-11ea-8f77-d1f9af908fd1.png" width="600">
 </p>
 
 ## Eureka Server Dashboard
 <p>
-  <img src="https://user-images.githubusercontent.com/22731894/81469263-c4e6f080-91ec-11ea-98ee-8a52f46fb0ab.png" width="550">
+  <img src="https://user-images.githubusercontent.com/22731894/81469263-c4e6f080-91ec-11ea-98ee-8a52f46fb0ab.png" width="600">
 </p>
 
 ## Hystrix Dashboard
 <p>
-  <img src="https://user-images.githubusercontent.com/22731894/81469265-c57f8700-91ec-11ea-84b0-6bf78ee11dba.png" width="550">
+  <img src="https://user-images.githubusercontent.com/22731894/81469265-c57f8700-91ec-11ea-84b0-6bf78ee11dba.png" width="600">
 </p>
